@@ -1,7 +1,12 @@
+import 'package:financial_tracker/components/myButton.dart';
+import 'package:financial_tracker/components/myTextField.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,45 +18,58 @@ class Login extends StatelessWidget {
         children: [
           // Logo
           Icon(
-            Icons.lock_outline_rounded,
-            size: 120,
+            Icons.lock_person_outlined,
+            size: 100,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+
+          const SizedBox(
+            height: 15,
+          ),
+
+          Text(
+            "Wallet Dashboard",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 32, color: Theme.of(context).colorScheme.onSurface),
           ),
 
           // Username or Email Text
-          // Input Text
-          TextField(
-            textAlign: TextAlign.center,
-            decoration: InputDecoration(
-                label: Text("Username or Email"),
-                labelStyle:
-                    TextStyle(color: Theme.of(context).colorScheme.secondary),
-                hoverColor: Theme.of(context).colorScheme.onSurface),
-          ),
+          Mytextfield(
+              controller: usernameController,
+              hintText: "Username or email",
+              obscureText: false),
 
-          TextField(
-            textAlign: TextAlign.center,
-            obscureText: true,
-            decoration: InputDecoration(
-              label: Text("Password"),
-              labelStyle:
-                  TextStyle(color: Theme.of(context).colorScheme.secondary),
-              hoverColor: Theme.of(context).colorScheme.onSurface,
-            ),
-          ),
+          // Password
+          Mytextfield(
+              controller: passwordController,
+              hintText: "Password",
+              obscureText: true),
 
           // Sign in button
-          ElevatedButton(
-            onPressed: null,
-            child: Text(
-              "Sign in",
-              textAlign: TextAlign.center,
-            ),
+          Mybutton(onTap: () {}, text: "Sign in"),
+
+          const SizedBox(
+            height: 25,
           ),
 
           // Register / Sign up
-          Text("Don't have an account? Sign up")
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text("Don't have an account? "),
+            GestureDetector(
+              onTap: () {},
+              child: Text(
+                "Sign up",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+          ]),
 
-          // or <LINE>
+          const SizedBox(
+            height: 25,
+          ),
 
           // Google Apple Logos
         ],
