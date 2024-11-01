@@ -1,3 +1,4 @@
+import 'package:financial_tracker/pages/home.dart';
 import 'package:financial_tracker/pages/login.dart';
 import 'package:financial_tracker/themes/themeProvider.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(context).themedata,
-      home: Login(),
+      home: HomePage(),
     );
   }
 }
